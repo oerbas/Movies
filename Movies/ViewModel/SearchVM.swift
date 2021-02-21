@@ -26,6 +26,7 @@ struct SearchViewModel {
     var id : Int {
         return result.id
     }
+
     
     var title : String {
         return result.title!

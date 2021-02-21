@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="363" width="414" height="733"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="homeCell" rowHeight="137" id="8dV-b0-bS3" customClass="HomeTableViewCell" customModule="Movies" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="homeCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="homeCell" rowHeight="137" id="8dV-b0-bS3" customClass="HomeTableViewCell" customModule="Movies" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="137"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8dV-b0-bS3" id="HSZ-Q7-Dus">
@@ -94,6 +94,14 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kiw-6q-yh1">
+                                <rect key="frame" x="0.0" y="38" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="7g4-qO-1fm"/>
+                                    <constraint firstAttribute="width" constant="414" id="jca-fY-7Tm"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                             <view contentMode="scaleToFill" restorationIdentifier="FSPagerView" translatesAutoresizingMaskIntoConstraints="NO" id="wCC-jA-B5n" customClass="FSPagerView" customModule="FSPagerView">
                                 <rect key="frame" x="0.0" y="82" width="414" height="279"/>
                                 <subviews>
@@ -120,18 +128,39 @@
                                     <constraint firstAttribute="height" constant="279" id="Zs6-RH-uOf"/>
                                 </constraints>
                             </view>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Kiw-6q-yh1">
-                                <rect key="frame" x="0.0" y="38" width="414" height="44"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIO-La-RBY">
+                                <rect key="frame" x="0.0" y="82" width="414" height="0.0"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ovH-lq-gze">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SearcBarTableViewCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearcBarTableViewCell" id="P08-XV-peQ" customClass="SearcBarTableViewCell" customModule="Movies" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="P08-XV-peQ" id="xZH-AV-2op">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="7g4-qO-1fm"/>
-                                    <constraint firstAttribute="width" constant="414" id="jca-fY-7Tm"/>
+                                    <constraint firstItem="ovH-lq-gze" firstAttribute="top" secondItem="LIO-La-RBY" secondAttribute="top" id="EtY-72-wC8"/>
+                                    <constraint firstAttribute="width" constant="414" id="Hvh-5J-B7u"/>
+                                    <constraint firstAttribute="trailing" secondItem="ovH-lq-gze" secondAttribute="trailing" id="VAb-12-Slu"/>
+                                    <constraint firstItem="ovH-lq-gze" firstAttribute="leading" secondItem="LIO-La-RBY" secondAttribute="leading" id="oRE-UF-1OX"/>
+                                    <constraint firstAttribute="bottom" secondItem="ovH-lq-gze" secondAttribute="bottom" id="ryd-xn-tSk"/>
+                                    <constraint firstAttribute="height" id="xSi-XV-79L"/>
                                 </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="LIO-La-RBY" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0rb-yN-KfY"/>
                             <constraint firstItem="wCC-jA-B5n" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1Zm-dM-LsR"/>
                             <constraint firstItem="pNP-tz-RzJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3IH-gS-PBe"/>
                             <constraint firstItem="pNP-tz-RzJ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="BS7-fp-lUU"/>
@@ -141,9 +170,11 @@
                             <constraint firstItem="wCC-jA-B5n" firstAttribute="top" secondItem="Kiw-6q-yh1" secondAttribute="bottom" id="S0b-c9-vst"/>
                             <constraint firstItem="wCC-jA-B5n" firstAttribute="top" secondItem="Kiw-6q-yh1" secondAttribute="bottom" id="SWp-ug-DK9"/>
                             <constraint firstItem="pNP-tz-RzJ" firstAttribute="top" secondItem="wCC-jA-B5n" secondAttribute="bottom" constant="2" id="UPd-sa-VJW"/>
+                            <constraint firstItem="LIO-La-RBY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="UjO-be-9fg"/>
                             <constraint firstItem="pNP-tz-RzJ" firstAttribute="top" secondItem="wCC-jA-B5n" secondAttribute="bottom" constant="2" id="a56-Fe-MS6"/>
                             <constraint firstAttribute="bottom" secondItem="pNP-tz-RzJ" secondAttribute="bottom" id="kWR-9P-bmI"/>
                             <constraint firstItem="Kiw-6q-yh1" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="38" id="o9f-Q0-cxy"/>
+                            <constraint firstItem="LIO-La-RBY" firstAttribute="top" secondItem="Kiw-6q-yh1" secondAttribute="bottom" id="oON-hN-AiQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="y6u-9D-Qe0"/>
@@ -152,6 +183,10 @@
                         <outlet property="bannerPageControl" destination="Pxg-Bp-3Uq" id="rZ5-WN-yve"/>
                         <outlet property="detailVie" destination="K4j-Gr-GsH" id="5Lf-Pp-5aZ"/>
                         <outlet property="pagerView" destination="wCC-jA-B5n" id="dUZ-pe-LED"/>
+                        <outlet property="sViewHeight" destination="xSi-XV-79L" id="pYT-9i-Jpn"/>
+                        <outlet property="searchBar" destination="Kiw-6q-yh1" id="2Ou-Za-JVT"/>
+                        <outlet property="searchBarTableView" destination="ovH-lq-gze" id="95A-sY-hUb"/>
+                        <outlet property="searchBarView" destination="LIO-La-RBY" id="lT7-ti-bdi"/>
                         <outlet property="subviewLAbel" destination="yBu-rI-LLc" id="Ng6-Gx-krB"/>
                         <outlet property="tableView" destination="pNP-tz-RzJ" id="YcH-MF-VMG"/>
                     </connections>

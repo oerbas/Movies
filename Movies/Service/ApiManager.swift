@@ -49,23 +49,21 @@ class ApiManager {
         let request = AF.request("\(Constants.baseURL)\(Constants.movieDetail)\(movieId)\("/similar")", parameters: Constants.apiKey)
         request.responseDecodable(of: Similar.self) { (response) in
             guard let upcoming = response.value else { return }
-            print("orhan",Constants.apiKey)
             DispatchQueue.main.async {
                 successCallback(upcoming)
             }
         }
     }
     
-    func getSearchResult(q: String, success successCallback: @escaping (Similar?) -> Void){
+    func getSearchResult(q: String, success successCallback: @escaping (Search?) -> Void){
         let params : [String : Any] = [
-            "q" : q,
-            "api_key" : Constants.apiKey
+            "query" : q,
+            "api_key" : Constants.secondApiKey
         ]
         let request = AF.request("\(Constants.baseURL)\(Constants.searchMoviePath)", parameters: params)
-        request.responseDecodable(of: Similar.self) { (response) in
+        request.responseDecodable(of: Search.self) { (response) in
             guard let searched = response.value else { return }
             DispatchQueue.main.async {
-                
                 successCallback(searched)
             }
         }

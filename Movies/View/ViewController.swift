@@ -12,10 +12,16 @@ class ViewController: UIViewController{
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pagerView: FSPagerView!
     @IBOutlet weak var bannerPageControl: UIPageControl!
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchBarView: UIView!
+    @IBOutlet weak var searchBarTableView: UITableView!
+    @IBOutlet weak var sViewHeight: NSLayoutConstraint!
     
-
+    
     private var UpComingModel : UpComingListViewModel!
     private var NowPlayingModel : NowPlayingListViewModel!
+    private var SearchModel : SearchListViewModel!
+
     private var fsPageControl : FSPageControl!
     
     @IBOutlet weak var detailVie: UIView!
@@ -29,8 +35,19 @@ class ViewController: UIViewController{
         tableView.delegate = self
         pagerView.delegate = self
         pagerView.dataSource = self
+        searchBarTableView.delegate = self
+        searchBarTableView.dataSource = self
         navigationController?.navigationBar.isHidden = true
+        searchBar.delegate = self
+        searchBarView.isHidden = true
+        sViewHeight.constant = 0
         updateData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        searchBarView.isHidden = true
+        sViewHeight.constant = 0
+        searchBar.endEditing(true)
     }
     
     func updateData() {
@@ -61,28 +78,56 @@ class ViewController: UIViewController{
             bannerPageControl.backgroundStyle = .minimal
         }
     }
+ 
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        sViewHeight.constant = 0
+        searchBarView.isHidden = true
+    }
 
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView == searchBarTableView {
+            return self.SearchModel == nil ? 0 : self.SearchModel.numberOfRowSelection()
+        } else {
             return self.UpComingModel == nil ? 0 : self.UpComingModel.numberOfRowSelection()
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if tableView == searchBarTableView {
+            let secondCell =  tableView.dequeueReusableCell(withIdentifier: "SearcBarTableViewCell", for: indexPath) as! SearcBarTableViewCell
+            let searchModel = SearchModel.moviesAtIndex(indexPath.row)
+            secondCell.accessoryType = .disclosureIndicator
+            secondCell.textLabel?.text = searchModel.title
+            return secondCell
+        } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell", for: indexPath) as! HomeTableViewCell
             cell.accessoryType = .disclosureIndicator
             let UpComingModels = UpComingModel.moviesAtIndex(indexPath.row)
             cell.post = UpComingModels
             return cell
+        }
+            
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MoviesDetailVC") as! MoviesDetailVC
-        let upcomingMovie = UpComingModel.moviesAtIndex(indexPath.row)
-        vc.modalPresentationStyle = .fullScreen
-        vc.movieId = upcomingMovie.id
-        self.navigationController?.pushViewController(vc, animated: true)
+        if tableView == searchBarTableView {
+            searchBarTableView.deselectRow(at: indexPath, animated: true)
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "MoviesDetailVC") as! MoviesDetailVC
+            let upcomingMovie = SearchModel.moviesAtIndex(indexPath.row)
+            vc.modalPresentationStyle = .fullScreen
+            vc.movieId = upcomingMovie.id
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+                tableView.deselectRow(at: indexPath, animated: true)
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "MoviesDetailVC") as! MoviesDetailVC
+                let upcomingMovie = UpComingModel.moviesAtIndex(indexPath.row)
+                vc.modalPresentationStyle = .fullScreen
+                vc.movieId = upcomingMovie.id
+                self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 
@@ -111,5 +156,31 @@ extension ViewController: FSPagerViewDelegate, FSPagerViewDataSource {
         vc.modalPresentationStyle = .fullScreen
         vc.movieId = upcomingMovie.id
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+extension ViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text!.count > 2 {
+            self.sViewHeight.constant = 445
+            self.searchBarView.isHidden = false
+            
+            ApiManager.instance.getSearchResult(q: searchBar.text ?? "" ,success: { result in
+                self.SearchModel = SearchListViewModel(moviesList: result!)
+                DispatchQueue.main.async {
+                    self.searchBarTableView.reloadData()
+                }
+            })
+            
+        } else {
+            self.sViewHeight.constant = 0
+        }
+    }
+
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBarView.isHidden = true
+        searchBar.endEditing(true)
+        sViewHeight.constant = 445
     }
 }

@@ -28,7 +28,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="137"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Labekajdnfjknakjfnjkanfal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ulX-qF-eie">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ulX-qF-eie">
                                                     <rect key="frame" x="130" y="25" width="231" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="aRW-pi-aQE"/>
@@ -38,7 +38,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="akjnjaksnfkjafnsşjsaknfaskjndaşknfaknfdşnfkdasknaknjfkjnfknsfanfkdj" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5k-PN-k8l">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5k-PN-k8l">
                                                     <rect key="frame" x="130" y="56" width="231" height="48"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="231" id="cSW-r2-uX1"/>
@@ -94,7 +94,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kiw-6q-yh1">
+                            <searchBar contentMode="redraw" placeholder="Search" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kiw-6q-yh1">
                                 <rect key="frame" x="0.0" y="38" width="414" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="7g4-qO-1fm"/>
@@ -181,12 +181,12 @@
                     <size key="freeformSize" width="414" height="1096"/>
                     <connections>
                         <outlet property="bannerPageControl" destination="Pxg-Bp-3Uq" id="rZ5-WN-yve"/>
-                        <outlet property="detailVie" destination="K4j-Gr-GsH" id="5Lf-Pp-5aZ"/>
                         <outlet property="pagerView" destination="wCC-jA-B5n" id="dUZ-pe-LED"/>
                         <outlet property="sViewHeight" destination="xSi-XV-79L" id="pYT-9i-Jpn"/>
                         <outlet property="searchBar" destination="Kiw-6q-yh1" id="2Ou-Za-JVT"/>
                         <outlet property="searchBarTableView" destination="ovH-lq-gze" id="95A-sY-hUb"/>
                         <outlet property="searchBarView" destination="LIO-La-RBY" id="lT7-ti-bdi"/>
+                        <outlet property="sliderView" destination="K4j-Gr-GsH" id="BKk-jF-gpE"/>
                         <outlet property="subviewLAbel" destination="yBu-rI-LLc" id="Ng6-Gx-krB"/>
                         <outlet property="tableView" destination="pNP-tz-RzJ" id="YcH-MF-VMG"/>
                     </connections>
@@ -200,11 +200,11 @@
             <objects>
                 <viewController storyboardIdentifier="MoviesDetailVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nL7-TI-TpB" customClass="MoviesDetailVC" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HmO-Xa-V7d">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="900"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ku0-x4-N24">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="900"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8nX-4O-e7g">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
@@ -216,7 +216,7 @@
                                                     <constraint firstAttribute="width" constant="414" id="svY-Ci-ifm"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lksmllkmkksksnklslsmlksklsmiklsikslkmsmkmsmsmsmsmssmskmslmslkmskms" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bL2-3R-Qjw">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bL2-3R-Qjw">
                                                 <rect key="frame" x="36" y="364" width="343" height="49"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="343" id="DNt-IE-luQ"/>
@@ -292,7 +292,7 @@
                                                                                 <constraint firstAttribute="width" constant="87" id="caW-Ey-qDJ"/>
                                                                             </constraints>
                                                                         </imageView>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="vsvsdfvsdfvssvdsdvsvfs" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWF-pu-oCz">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWF-pu-oCz">
                                                                             <rect key="frame" x="12" y="90" width="87" height="32"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="32" id="840-VN-a44"/>
@@ -433,7 +433,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="icR-2a-8kh"/>
-                    <size key="freeformSize" width="414" height="1200"/>
+                    <size key="freeformSize" width="414" height="900"/>
                     <connections>
                         <outlet property="imdbIcon" destination="azw-Sm-Igh" id="5CZ-sL-IW0"/>
                         <outlet property="moviesCollectionView" destination="cx5-N2-dyi" id="fgF-Hi-Fte"/>

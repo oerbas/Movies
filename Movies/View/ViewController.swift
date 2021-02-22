@@ -8,7 +8,7 @@
 import UIKit
 import FSPagerView
 
-class ViewController: UIViewController{
+class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pagerView: FSPagerView!
     @IBOutlet weak var bannerPageControl: UIPageControl!
@@ -16,20 +16,17 @@ class ViewController: UIViewController{
     @IBOutlet weak var searchBarView: UIView!
     @IBOutlet weak var searchBarTableView: UITableView!
     @IBOutlet weak var sViewHeight: NSLayoutConstraint!
-    
+    @IBOutlet weak var sliderView: UIView!
+    @IBOutlet weak var subviewLAbel: UILabel!
     
     private var UpComingModel : UpComingListViewModel!
     private var NowPlayingModel : NowPlayingListViewModel!
     private var SearchModel : SearchListViewModel!
-
     private var fsPageControl : FSPageControl!
-    
-    @IBOutlet weak var detailVie: UIView!
-    @IBOutlet weak var subviewLAbel: UILabel!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         self.pagerView.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "cell")
         tableView.dataSource = self
         tableView.delegate = self
@@ -37,8 +34,8 @@ class ViewController: UIViewController{
         pagerView.dataSource = self
         searchBarTableView.delegate = self
         searchBarTableView.dataSource = self
-        navigationController?.navigationBar.isHidden = true
         searchBar.delegate = self
+        navigationController?.navigationBar.isHidden = true
         searchBarView.isHidden = true
         sViewHeight.constant = 0
         updateData()
@@ -51,7 +48,6 @@ class ViewController: UIViewController{
     }
     
     func updateData() {
-        
         ApiManager.instance.getUpComingList(success: { result in
             self.UpComingModel = UpComingListViewModel(moviesList: result!)
             DispatchQueue.main.async {
@@ -110,8 +106,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             cell.post = UpComingModels
             return cell
         }
-            
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == searchBarTableView {
             searchBarTableView.deselectRow(at: indexPath, animated: true)
@@ -132,7 +128,6 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension ViewController: FSPagerViewDelegate, FSPagerViewDataSource {
-    
     public func numberOfItems(in pagerView: FSPagerView) -> Int {
         bannerPageControl.numberOfPages = self.NowPlayingModel == nil ? 0 : self.NowPlayingModel.numberOfRowSelection()
         return self.NowPlayingModel == nil ? 0 : self.NowPlayingModel.numberOfRowSelection()
@@ -143,7 +138,7 @@ extension ViewController: FSPagerViewDelegate, FSPagerViewDataSource {
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
         let url = upcomingModel.poster_path
         cell.imageView?.kf.setImage(with: url)
-        cell.addSubview(detailVie)
+        cell.addSubview(sliderView)
         subviewLAbel.text = upcomingModel.title
         bannerPageControl.currentPage = index
         return cell
@@ -158,20 +153,18 @@ extension ViewController: FSPagerViewDelegate, FSPagerViewDataSource {
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
+
 extension ViewController: UISearchBarDelegate {
-    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text!.count > 2 {
             self.sViewHeight.constant = 445
             self.searchBarView.isHidden = false
-            
             ApiManager.instance.getSearchResult(q: searchBar.text ?? "" ,success: { result in
                 self.SearchModel = SearchListViewModel(moviesList: result!)
                 DispatchQueue.main.async {
                     self.searchBarTableView.reloadData()
                 }
             })
-            
         } else {
             self.sViewHeight.constant = 0
         }

@@ -16,17 +16,14 @@ class MoviesDetailVC: UIViewController {
     @IBOutlet weak var moviesDate: UILabel!
     @IBOutlet weak var moviesImdb: UILabel!
     @IBOutlet weak var imdbIcon: UIImageView!
-    
     @IBOutlet weak var moviesCollectionView: UICollectionView!
     
     var movieId: Int!
     private var Movie : MovieDetailModel!
     private var SimilarMovie : SimilarListViewModel!
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         updateData()
     }
   
@@ -50,26 +47,24 @@ class MoviesDetailVC: UIViewController {
             DispatchQueue.main.async {
                 self.moviesCollectionView.reloadData()
             }
-    })
-        let recognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapped))
-       imdbIcon.addGestureRecognizer(recognizer)
-       navigationController?.navigationBar.isHidden = true
-       moviesCollectionView.delegate = self
-       moviesCollectionView.dataSource = self
-       
+        })
+        
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(self.openImdb))
+        imdbIcon.addGestureRecognizer(recognizer)
+        navigationController?.navigationBar.isHidden = true
+        moviesCollectionView.delegate = self
+        moviesCollectionView.dataSource = self
     }
-
     
     @IBAction func backBtnAction(_ sender: Any) {
         _ = navigationController?.popViewController(animated: true)
     }
     
-    @objc func tapped() {
+    @objc func openImdb() {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
         vc.imdbID = self.Movie.imdb_id
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
 }
 
 extension MoviesDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -92,5 +87,4 @@ extension MoviesDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
         vc.movieId = similar.id
         self.navigationController?.pushViewController(vc, animated: true)
     }
-   
 }

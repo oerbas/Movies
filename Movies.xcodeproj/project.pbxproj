@@ -14,7 +14,6 @@
 		E6788C0F25E106F3009F5196 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6788C0D25E106F3009F5196 /* Main.storyboard */; };
 		E6788C1125E106F5009F5196 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6788C1025E106F5009F5196 /* Assets.xcassets */; };
 		E6788C1425E106F5009F5196 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6788C1225E106F5009F5196 /* LaunchScreen.storyboard */; };
-		E6788C3F25E12905009F5196 /* BannerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6788C3E25E12905009F5196 /* BannerTableViewCell.swift */; };
 		E6788C4325E1311C009F5196 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6788C4225E1311C009F5196 /* HomeTableViewCell.swift */; };
 		E6788C4A25E1359B009F5196 /* Movies.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6788C4925E1359B009F5196 /* Movies.swift */; };
 		E6788C5325E13D3F009F5196 /* UpComing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6788C5225E13D3F009F5196 /* UpComing.swift */; };
@@ -31,7 +30,6 @@
 		E6788C9B25E29671009F5196 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6788C9A25E29671009F5196 /* WebViewController.swift */; };
 		E6788C9E25E2A55C009F5196 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6788C9D25E2A55C009F5196 /* Search.swift */; };
 		E6788CA125E2A59B009F5196 /* SearchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6788CA025E2A59B009F5196 /* SearchVM.swift */; };
-		E6788CAE25E2B28B009F5196 /* SearcBarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6788CAD25E2B28B009F5196 /* SearcBarTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,7 +44,6 @@
 		E6788C1025E106F5009F5196 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E6788C1325E106F5009F5196 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E6788C1525E106F5009F5196 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E6788C3E25E12905009F5196 /* BannerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerTableViewCell.swift; sourceTree = "<group>"; };
 		E6788C4225E1311C009F5196 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		E6788C4925E1359B009F5196 /* Movies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movies.swift; sourceTree = "<group>"; };
 		E6788C5225E13D3F009F5196 /* UpComing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpComing.swift; sourceTree = "<group>"; };
@@ -63,7 +60,6 @@
 		E6788C9A25E29671009F5196 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		E6788C9D25E2A55C009F5196 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		E6788CA025E2A59B009F5196 /* SearchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVM.swift; sourceTree = "<group>"; };
-		E6788CAD25E2B28B009F5196 /* SearcBarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearcBarTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,9 +127,7 @@
 		E6788C3D25E128DF009F5196 /* Table Cell */ = {
 			isa = PBXGroup;
 			children = (
-				E6788C3E25E12905009F5196 /* BannerTableViewCell.swift */,
 				E6788C4225E1311C009F5196 /* HomeTableViewCell.swift */,
-				E6788CAD25E2B28B009F5196 /* SearcBarTableViewCell.swift */,
 			);
 			path = "Table Cell";
 			sourceTree = "<group>";
@@ -317,9 +311,7 @@
 				E6788C5325E13D3F009F5196 /* UpComing.swift in Sources */,
 				E6788C6525E19BE2009F5196 /* NowPlaying.swift in Sources */,
 				E6788C6225E19863009F5196 /* Constants.swift in Sources */,
-				E6788CAE25E2B28B009F5196 /* SearcBarTableViewCell.swift in Sources */,
 				E6788C8225E25C49009F5196 /* MovieDetailVM.swift in Sources */,
-				E6788C3F25E12905009F5196 /* BannerTableViewCell.swift in Sources */,
 				E6788C9425E27F6B009F5196 /* Similar.swift in Sources */,
 				E6788C9E25E2A55C009F5196 /* Search.swift in Sources */,
 				E6788C6A25E19D77009F5196 /* NowPlayingVM.swift in Sources */,

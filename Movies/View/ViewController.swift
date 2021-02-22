@@ -94,7 +94,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == searchBarTableView {
-            let secondCell =  tableView.dequeueReusableCell(withIdentifier: "SearcBarTableViewCell", for: indexPath) as! SearcBarTableViewCell
+            let secondCell =  tableView.dequeueReusableCell(withIdentifier: "SearcBarTableViewCell", for: indexPath)
             let searchModel = SearchModel.moviesAtIndex(indexPath.row)
             secondCell.accessoryType = .disclosureIndicator
             secondCell.textLabel?.text = searchModel.title
